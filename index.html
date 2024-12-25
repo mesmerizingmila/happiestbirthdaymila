@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+
+	<link rel="stylesheet" href="styles.css">
+	<title>Happiest Birthday MILA</title>
+</head>
+<body>
+	<div class="container">
+		<label>
+			<div class="heart">
+				<img src="https://upload.wikimedia.org/wikipedia/commons/4/42/Love_Heart_SVG.svg" alt="Heart">
+			</div>
+			<input id="messageState" type="checkbox" style="display:none"/>
+		</label>
+		<div class="message">
+			<h1>Hi my love,</h1>
+			<p>
+				I don't know where to start, but I thought it would be nice to surprise you with something different this Valentine's Day. I'm ashamed to admit how long I've actually been working on this, but :) I'm pretty proud of myself for keeping this from you for so long hehe. 
+			</p>
+			<p>
+				You are the most incredible person I have ever met. You make me feel safe, loved, and so happy. Your generosity, humor, and kindness brighten my life in ways words cannot describe.
+			</p>
+			<p>
+				I want you to always remember how proud I am of you and how much I cherish every moment with you. You have shown me a love so pure and unconditional that I feel like the luckiest person alive.
+			</p>
+			<p>
+				As I look ahead to our future together, I am excited about all the possibilities: living together, getting a puppy, getting married, starting a family, and growing old with you. For the first time, I see a future so bright because you're in it.
+			</p>
+			<p>
+				Happy Valentine's Day, honey. Words cannot begin to describe how much I love you.
+			</p>
+			<p>Je t’aime pour toujours et toujours, mon amour x</p>
+		</div>
+	</div>
+
+	<!-- Include jQuery -->
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script>
+		$("#messageState").on("change", function() {
+			$(".message").removeClass("openNor closeNor");
+			if ($(this).is(":checked")) {
+				$(".message").removeClass("closed no-anim").addClass("openNor");
+				$(".heart").removeClass("closeHer openedHer").addClass("openHer");
+				$(".container").stop().animate({ "backgroundColor": "#f48fb1" }, 2000);
+				console.log("Opening");
+			} else {
+				$(".message").removeClass("no-anim").addClass("closeNor");
+				$(".heart").removeClass("openHer openedHer").addClass("closeHer");
+				$(".container").stop().animate({ "backgroundColor": "#fce4ec" }, 2000);
+				console.log("Closing");
+			}
+		});
+
+		$(".message").on('animationend', function() {
+			console.log("Message Animation End");
+			if ($(this).hasClass("closeNor")) $(this).addClass("closed");
+			$(this).removeClass("openNor closeNor").addClass("no-anim");
+		});
+
+		$(".heart").on('animationend', function() {
+			console.log("Heart Animation End");
+			if (!$(this).hasClass("closeHer")) {
+				$(this).addClass("openedHer beating");
+			} else {
+				$(this).addClass("no-anim").removeClass("beating");
+			}
+			$(this).removeClass("openHer closeHer");
+		});
+	</script>
+</body>
+</html>
