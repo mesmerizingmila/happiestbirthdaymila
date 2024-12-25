@@ -17,6 +17,7 @@ body {
 	margin: 0;
     background-image: url("img_1.jpg"); 
   width: 100%; 
+	font-family: 'Great vibes', cursive;
 }
 
 .container {
